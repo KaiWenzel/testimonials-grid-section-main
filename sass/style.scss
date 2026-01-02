@@ -1,0 +1,184 @@
+@use 'variables' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 2rem;
+    background-color: $neutral-color-white;
+    font-family: $font-set;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 36px;
+    padding-bottom: 36px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.8rem;
+    background-color: $primary-color-purple-500;
+    border-radius: 6px;
+    font-size: $font-size;
+    font-weight: $font-weight-normal;
+    color: $neutral-color-white;
+    box-shadow: 10px 10px 20px $neutral-color-grey-200, 
+                20px 20px 40px $neutral-color-grey-200;
+
+    transition: 
+        transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+        box-shadow 0.3s ease;
+}
+
+.card-profile {
+    display: flex;
+    gap: 16px;
+}
+
+.card-profile > img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    color: $neutral-color-grey-200;
+}
+
+.card-name {
+    font-weight: $font-weight-bold;
+    color: $neutral-color-grey-100;
+}
+
+.text-bold {
+    font-size: $font-size-heading;
+    color: $neutral-color-grey-100;
+}
+
+.text {
+    color: $neutral-color-grey-200;
+}
+
+.card1 {
+    img {
+        border: 2px solid $primary-color-purple-300;
+    }
+}
+.card2 {
+    background-color: $neutral-color-grey-500;
+}
+
+.card3,
+.card5 {
+    background-color: $neutral-color-white;
+
+    .card-name,
+    .text-bold {
+        color: $neutral-color-grey-500;
+    }
+
+    .verification,
+    .text {
+        color: $neutral-color-grey-400;
+    }
+}
+
+.card4 {
+    background-color: $neutral-color-dark-blue;
+
+    img {
+        border: 2px solid $primary-color-purple-500;
+    }
+}
+
+.card5 {
+    background-color: $neutral-color-white;
+    color: black;
+}
+
+::selection {
+    background-color: $primary-color-purple-300;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+
+}
+@media (min-width: 948px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 32px;
+        max-width: 1100px;
+    }
+
+    .card1 {
+        grid-column: 1 / span 2;
+        grid-row: 1 / 2;
+        position: relative;
+
+        * {
+            z-index: 1;
+        }
+    }
+
+    .card1::before {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        right: 12%;
+
+        width: 120px;
+        height: 120px;
+
+        z-index: 0;
+
+        background-image: url(./images/bg-pattern-quotation.svg);
+
+        background-repeat: none;
+        background-size: contain;
+        pointer-events: none;
+        transition:
+            transform 0.4s ease,
+            opacity 0.4s ease;
+    }
+
+    .card2 {
+        grid-column: 3 / span 1;
+        grid-row: 1 / 2;
+    }
+
+    .card3 {
+        grid-column: 1 / span 1;
+        grid-row: 2 / 3;
+    }
+
+    .card4 {
+        grid-column: 2 / span 2;
+        grid-row: 2 / 3;
+    }
+
+    .card5 {
+        grid-column: 4 / span 1;
+        grid-row: 1 / 3;
+    }
+}
